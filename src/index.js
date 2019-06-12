@@ -9,6 +9,9 @@ import { STORY_ARCHIVE } from "./constants/actionTypes";
 console.log("Index:");
 console.log(store.getState());
 
+console.log("Index:");
+console.log(store.getState());
+
 ReactDOM.render(
   <App
     stories={store.getState().storyState}
