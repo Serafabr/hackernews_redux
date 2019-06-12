@@ -5,7 +5,7 @@ import Stories from "./Stories";
 function App({ stories }) {
   return (
     <div className="app">
-      <Stories stories={stories} />
+      <Stories stories={stories} onArchive={() => {}} />
     </div>
   );
 }
