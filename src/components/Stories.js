@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { getReadableStories } from "../selectors/story";
 import "./Stories.css";
 import Story from "./Story";
 
@@ -22,20 +24,22 @@ function StoriesColumns({ columns }) {
   );
 }
 
-function Stories({ stories, onArchive }) {
+function Stories({ stories }) {
   return (
     <div className="stories">
       <StoriesColumns columns={COLUMNS} />
       {(stories || []).map(story => (
-        <Story
-          key={story.objectID}
-          story={story}
-          columns={COLUMNS}
-          onArchive={onArchive}
-        />
+        <Story key={story.objectID} story={story} columns={COLUMNS} />
       ))}
     </div>
   );
 }
 
-export default Stories;
+// Connecting state from redux
+function mapStatetoProps(state) {
+  return {
+    stories: getReadableStories(state)
+  };
+}
+
+export default connect(mapStatetoProps)(Stories);
